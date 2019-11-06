@@ -17,14 +17,17 @@ Here is a sample valid set up:
   },
 
 Learn more at https://github.com/alexluong/gatsby-plugin-firebase.
-`
-
+`;
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`,
+  encoding: "latin1"
+});
 exports.onPreBootstrap = ({ reporter }, options) => {
   if (!options.features) {
-    reporter.panic(ERROR_MESSAGE)
+    reporter.panic(ERROR_MESSAGE);
   }
 
-  const { features } = options
+  const { features } = options;
 
   if (
     !features.auth &&
@@ -34,6 +37,6 @@ exports.onPreBootstrap = ({ reporter }, options) => {
     !features.messaging &&
     !features.functions
   ) {
-    reporter.panic(ERROR_MESSAGE)
+    reporter.panic(ERROR_MESSAGE);
   }
-}
+};
